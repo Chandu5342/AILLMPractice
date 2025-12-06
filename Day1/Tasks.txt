@@ -1,0 +1,19 @@
+🟢 Easy
+
+Change the response message in health-check.
+
+Change the port value inside .env.
+
+🟡 Medium
+
+Create a new route: /hello
+
+Return { message: "Hello Chandu" }
+
+🔴 Hard
+
+Create a folder /utils
+
+Create a file logger.js
+
+Log a message every time API is called.
