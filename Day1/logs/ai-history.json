@@ -1,0 +1,46 @@
+[
+  {
+    "timestamp": "2025-12-11T05:23:52.031Z",
+    "provider": "groq",
+    "systemPrompt": "You are a helpful assistant.",
+    "userMessages": [
+      "Hello, can you explain REST APIs?",
+      "Also give a simple example in Node.js."
+    ],
+    "response": "**What is a REST API?**\n\nREST (Representational State of Resource) is an architectural style for designing networked applications. It's a popular approach for building web APIs (Application Programming Interfaces) that allow different systems to communicate with each other over the internet.\n\nREST APIs are based on the following principles:\n\n1. **Resource-based**: APIs are designed around resources, which are identified by URIs (Uniform Resource Identifiers).\n2. **Client-server architecture**: The client and server are separate, with the client making requests to the server.\n3. **Stateless**: Each request from the client to the server contains all the necessary information for processing.\n4. **Cacheable**: Responses from the server can be cached by the client.\n5. **Uniform interface**: All interactions between the client and server follow a uniform interface, which includes HTTP verbs (GET, POST, PUT, DELETE, etc.) and resource identifiers.\n\n**Common HTTP Verbs in REST APIs**\n\n1. **GET**: Retrieve a resource.\n2. **POST**: Create a new resource.\n3. **PUT**: Update an existing resource.\n4. **DELETE**: Delete a resource.\n\n**Simple Example in Node.js**\n\nLet's create a simple REST API in Node.js that allows you to store and retrieve books. We'll use the Express.js framework.\n\n**`app.js`**\n```javascript\nconst express = require('express');\nconst app = express();\n\n// Middleware to parse JSON requests\napp.use(express.json());\n\n// Sample in-memory data store (in a real application, you'd use a database)\nlet books = [\n  { id: 1, title: 'Book 1', author: 'Author 1' },\n  { id: 2, title: 'Book 2', author: 'Author 2' },\n];\n\n// GET /books\napp.get('/books', (req, res) => {\n  res.json(books);\n});\n\n// GET /books/:id\napp.get('/books/:id', (req, res) => {\n  const id = req.params.id;\n  const book = books.find((book) => book.id === parseInt(id));\n  if (book) {\n    res.json(book);\n  } else {\n    res.status(404).json({ error: 'Book not found' });\n  }\n});\n\n// POST /books\napp.post('/books', (req, res) => {\n  const newBook = req.body;\n  books.push({ id: books.length + 1, ...newBook });\n  res.json(newBook);\n});\n\n// PUT /books/:id\napp.put('/books/:id', (req, res) => {\n  const id = req.params.id;\n  const updatedBook = req.body;\n  const bookIndex = books.findIndex((book) => book.id === parseInt(id));\n  if (bookIndex !== -1) {\n    books[bookIndex] = { id, ...updatedBook };\n    res.json(updatedBook);\n  } else {\n    res.status(404).json({ error: 'Book not found' });\n  }\n});\n\n// DELETE /books/:id\napp.delete('/books/:id', (req, res) => {\n  const id = req.params.id;\n  const bookIndex = books.findIndex((book) => book.id === parseInt(id));\n  if (bookIndex !== -1) {\n    books.splice(bookIndex, 1);\n    res.json({ message: 'Book deleted' });\n  } else {\n    res.status(404).json({ error: 'Book not found' });\n  }\n});\n\napp.listen(3000, () => {\n  console.log('Server listening on port 3000');\n});\n```\n\nYou can test the API using a tool like curl or a REST client like Postman:\n\n* Get all books: `GET http://localhost:3000/books`\n* Get a specific book: `GET http://localhost:3000/books/1`\n* Create a new book: `POST http://localhost:3000/books` with JSON body `{\"title\": \"New Book\", \"author\": \"New Author\"}`\n* Update an existing book: `PUT http://localhost:3000/books/1` with JSON body `{\"title\": \"Updated Book\", \"author\": \"Updated Author\"}`\n* Delete a book: `DELETE http://localhost:3000/books/1`\n\nRemember to replace the `books` array with a real database in a production environment."
+  },
+  {
+    "timestamp": "2025-12-11T05:25:22.599Z",
+    "provider": "groq",
+    "systemPrompt": "You are a helpful assistant.",
+    "userMessages": [
+      "listen a boy has 5 rupess and that boy a give to anther boy of 4 repess",
+      "boy a has homany rupess.",
+      "boy b has howmany rupess?"
+    ],
+    "response": "Let's break it down:\n\nInitially:\n- Boy A has 5 rupees.\n- Boy B has 0 rupees.\n\nBoy A gives 4 rupees to Boy B. So, the amounts are updated to:\n- Boy A has 5 - 4 = 1 rupee.\n- Boy B has 0 + 4 = 4 rupees.\n\nSo, \nBoy A has 1 rupee.\nBoy B has 4 rupees."
+  },
+  {
+    "timestamp": "2025-12-11T06:28:03.640Z",
+    "provider": "groq",
+    "systemPrompt": "You are a helpful assistant.",
+    "userMessages": [
+      "listen a boy has 5 rupess and that boy a give to anther boy of 4 repess",
+      "boy a has homany rupess.",
+      "boy b has howmany rupess?"
+    ],
+    "response": "To find out how much money each boy has, we need to do some simple subtraction.\n\nInitially, Boy A had 5 rupees.\n\nBoy A gave 4 rupees to Boy B. So, we need to subtract 4 from 5.\n\n5 - 4 = 1\n\nSo, Boy A now has 1 rupee.\n\nInitial amount of Boy B was 0. So, after getting 4 rupees from Boy A, Boy B now has 4 rupees.\n\nBoy A has 1 rupee.\nBoy B has 4 rupees."
+  },
+  {
+    "timestamp": "2025-12-12T18:13:15.439Z",
+    "provider": "groq",
+    "systemPrompt": "You are a helpful math tutor.",
+    "userMessages": [
+      "A boy has ₹5.",
+      "He gives ₹4 to another boy.",
+      "How much money does Boy A have now?",
+      "How much money does Boy B have?"
+    ],
+    "response": "Boy A initially had ₹5. He gave ₹4 to Boy B, so Boy A now has ₹5 - ₹4 = ₹1.\n\nBoy B initially had no money, but he received ₹4 from Boy A, so Boy B now has ₹4."
+  }
+]

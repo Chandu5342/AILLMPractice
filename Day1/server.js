@@ -3,7 +3,7 @@ dotenv.config();
 import express from 'express';
 import healthRoutes from './routes/health.js';
 import { logger } from './utils/logger.js';
-
+import askAdvancedRoute from "./routes/askAdvanced.js";
 import askRoutes from './routes/ask.js';
 
 
@@ -18,6 +18,10 @@ app.use((req, res, next) => {
    next();
 });
 app.use('/health', healthRoutes);
+
+
+app.use("/ask-ai-advanced", askAdvancedRoute);
+
 app.use('/ask-ai', askRoutes);
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
