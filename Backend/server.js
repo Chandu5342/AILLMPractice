@@ -29,8 +29,8 @@ app.use('/ask-ai', askRoutes);//day1
 app.use('/embeddings', emdedRoutes);//day4
 app.use("/semantic-search", semanticSearchRoute);//day5
 app.use("/sql",sqlSearchRoute);
-app.use("/vector",vectorSearchRoute);
-app.use('/vector2',vector2SearchRoute);
+app.use("/vector",vectorSearchRoute);//day6
+app.use('/vector2',vector2SearchRoute);//day7
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
