@@ -11,6 +11,8 @@ import semanticSearchRoute from "./routes/semanticSearch.js";
 import  sqlSearchRoute from './routes/sqlSearch.routes.js';
 import vectorSearchRoute from './routes/vectorSearch.routes.js'
 import vector2SearchRoute from './routes/vectorSearch.v2.routes.js'
+import ingestRoutes from './routes/ingest.routes.js';
+import compareRoutes from './routes/compare.routes.js';
 const app = express();
 const PORT = process.env.PORT || 3000;
 
@@ -25,12 +27,16 @@ app.use('/health', healthRoutes);
 app.use("/ask-ai-advanced", askAdvancedRoute);//day2
 app.use('/ask-ai-deep', askDeepRoute);//day3
 
+
 app.use('/ask-ai', askRoutes);//day1
 app.use('/embeddings', emdedRoutes);//day4
 app.use("/semantic-search", semanticSearchRoute);//day5
 app.use("/sql",sqlSearchRoute);
 app.use("/vector",vectorSearchRoute);//day6
 app.use('/vector2',vector2SearchRoute);//day7
+app.use("/ingest", ingestRoutes);//day 8
+app.use("/compare", compareRoutes); //day 8-2
+
 app.listen(PORT, () => {
     console.log(`Server is running on port ${PORT}`);
 });
